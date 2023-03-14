@@ -1,0 +1,20 @@
+- name: Install Nginx on aws instance
+  hosts: localhost
+  become: yes
+  tasks:
+    #    - name: Git clone velocity on html directy
+    #  git:
+    #    repo: https://github.com/legomushroom/velocity.git
+    #    dest: /var/www/html/
+    #    clone: yes
+    #    update: yes
+
+    - name: 'Install nginx'
+      ansible.builtin.yum:
+        name: ['nginx']
+        state: latest
+
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
